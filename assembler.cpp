@@ -15,7 +15,7 @@ int main()
 
 	//Tokenize each line
 	regex instructions_regex("\s*[a-zA-Z]+\s+[a-zA-Z]+\s+[a-fA-F0-9']+");
-	vector<string> first, second, third;
+	vector<string> opcodes, addressing_modes, addresses;
 	for(string line : file_lines)
 	{
 		cout<<"Instruction: "<<line<<" is ";
@@ -51,15 +51,15 @@ int main()
 
 			if(tokens.size() == 2)
 			{
-				first.push_back("");
-				second.push_back(tokens[0]);
-				third.push_back(tokens[1]);
+				opcodes.push_back("");
+				addressing_modes.push_back(tokens[0]);
+				addresses.push_back(tokens[1]);
 			}
 			else if(tokens.size() == 3)
 			{
-				first.push_back(tokens[0]);
-				second.push_back(tokens[1]);
-				third.push_back(tokens[2]);
+				opcodes.push_back(tokens[0]);
+				addressing_modes.push_back(tokens[1]);
+				addresses.push_back(tokens[2]);
 			}
 
 		}
@@ -67,7 +67,7 @@ int main()
 			cout<<"wrong instruction\n";
 	}
 		
-	for(int i=0, l = second.size(); i<l;i++)
-		cout<<first[i]<<" "<<second[i]<<" "<<third[i]<<endl;
+	for(int i=0, l = addressing_modes.size(); i<l;i++)
+		cout<<opcodes[i]<<" "<<addressing_modes[i]<<" "<<addresses[i]<<endl;
 	return 0;
 }
